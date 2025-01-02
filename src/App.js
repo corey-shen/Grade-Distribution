@@ -1,16 +1,19 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import logo from './ucsc_logo.png';
+import AboutPage from './components/AboutPage';
+import NavigationBar from './components/NavigationBar';
 
 function App() {
   return (
-    <div className="Homepage">
-      <header className="top-bar">
-        <img src={logo} className="Logo" alt="UCSC Logo" />
-        <h1 className="homepage-title">UC Santa Cruz Grade Distribution</h1>
-        <h2 className="about">About</h2>
-      </header>
-    </div>
-
+    <BrowserRouter>
+    {/*NavBar stays outside, always visible */}
+    <NavigationBar />
+    <Routes>
+      <Route path="/" element={<div>Home content goes here!</div>} />
+      <Route path="/about" element={<AboutPage />} />
+    </Routes>
+    <div className="Homepage"></div>
+    </BrowserRouter>
   );
 }
 
